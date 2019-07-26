@@ -9,9 +9,6 @@
     "bcrypt": "^3.0.6",
     "jquery": "^3.4.1",
     "meteor-node-stubs": "^0.3.2",
-    "npm": "^6.9.0",
-    "react": "^16.8.6",
-    "react-day-picker": "^7.3.0",
-    "react-dom": "^16.8.6"
+    "npm": "^6.9.0"
   }
 }
