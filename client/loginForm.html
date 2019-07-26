@@ -1,0 +1,17 @@
+<template name="loginForm">
+  {{#unless currentUser}}
+  {{#if formVisible}}
+    <div class="loginWrapper">
+      <form class="loginForm">
+        <input type="email" name="userEmail" class="userEmail" placeholder="e-mail">
+        <input type="password" name="userPassword" class="userPassword" placeholder="wachtwoord">
+        <button type="submit" name="loginButton" class="loginButton">Log in</button>
+      </form>
+    </div>
+  {{else}}
+    <button type="button" name="seeLoginButton" class="loginButton">Log in</button>
+  {{/if}}
+  {{else}}
+    <button type="button" name="logOutButton">Uitloggen</button>
+  {{/unless}}
+</template>

@@ -1,0 +1,18 @@
+<template name="newEvent">
+  <form class="eventForm" name="eventForm">
+    <label for="eventTitle">Naam evenement</label>
+    <input type="text" name="eventTitle">
+    <div class="dateWrapper">
+      <label for="eventDateFrom">Datum van</label>
+      <div>
+        {{> React component=DayPicker}}
+      </div>
+      <!-- <input type='text' class='eventDateFrom' data-language='nl' name="eventDateFrom" /> -->
+      <label for="eventDateTo">Datum tot</label>
+      <input type='text' class='eventDateTo' data-language='nl' name="eventDateTo" />
+    </div>
+    <label for="eventLocation">Locatie evenement</label>
+    <input type="text" name="eventLocation">
+    <button type="submit" name="saveEventButton">Opslaan</button>
+  </form>
+</template>

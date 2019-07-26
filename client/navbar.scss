@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=MedievalSharp');
+
+  div{
+    &.mainLayout {
+      div {
+        &.navbarWrapper {
+          background-color: #000;
+          height: 55px;
+          display: flex;
+          flex-direction: row;
+          flex-grow: 0;
+          flex-shrink: 0;
+          div {
+            &.menuItem {
+              display: flex;
+              flex-grow: 1;
+              flex-shrink: 1;
+              a, button {
+                font-family: 'MedievalSharp', cursive;
+                font-size: 22px;
+                color: #fff;
+                margin: auto;
+                text-decoration: none;
+                background: #000;
+                border: none;
+                &:hover {
+                  color: #993130;
+                  cursor: pointer;
+                }
+              }
+              div {
+                &.loginWrapper {
+                  margin: auto;
+                }
+              }
+            }
+          }
+          img {
+            &.logo {
+              position: relative;
+              z-index: 1;
+              margin: auto;
+            }
+          }
+        }
+      }
+    }
+  }

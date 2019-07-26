@@ -1,0 +1,17 @@
+<template name="calendar">
+  <div class="calendarWrapper">
+    <h1>Agenda</h1>
+    <p>Hieronder zie je de evenementen waar de Compagnie van Cranenburgh in
+      2019 te vinden is.</p>
+    {{#if currentUser}}
+      {{> newEvent}}
+      {{#each eventList}}
+        {{> event}}
+      {{/each}}
+    {{else}}
+      {{#each eventList}}
+        {{> event}}
+      {{/each}}
+    {{/if}}
+  </div>
+</template>

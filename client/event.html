@@ -1,0 +1,9 @@
+<template name="event">
+  <div class="eventWrapper">
+    <h5>{{name}}</h5>
+    <p>{{date}}, {{place}}</p>
+    {{#if website}}
+      <a href="{{website}}"><i class="fas fa-globe"></i></a>
+    {{/if}}
+  </div>
+</template>

@@ -1,0 +1,29 @@
+@import url("scss/fontawesome.scss");
+@import url("scss/solid.scss");
+
+body {
+  margin: 0;
+  background: url(images/cvc8.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  div {
+    &.main {
+      width: 0;
+      height: 0;
+    }
+    &.mainLayout {
+      height: 100vh;
+      div {
+        &.pageWrapper {
+          width: 50%;
+          height: 175%;
+          padding: 20px 0 0 0;
+          margin: auto;
+          background: rgba(255, 255, 255, 0.8);
+        }
+      }
+    }
+  }
+}
