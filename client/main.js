@@ -3,8 +3,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
-Meteor.subscribe('users');
-Meteor.subscribe('events');
+Meteor.subscribe(`users`);
 
 BlazeLayout.setRoot('body');
 

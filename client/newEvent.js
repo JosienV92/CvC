@@ -1,33 +1,32 @@
-Template.newEvent.onRendered(function () {
-  const template = this;
+import {Events} from "../imports/api/events";
 
-  Tracker.afterFlush(() => {
-    $('.eventDateTo').datepicker({
-      days: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
-      daysShort: ['zon', 'maa', 'din', 'woe', 'don', 'vrij', 'zat'],
-      daysMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-      months: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
-      monthsShort: ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
-      today: 'Vandaag',
-      clear: 'Annuleren',
-      format: 'dd/mm/yyyy',
-      weekStart: 1
-    });
-    //
-    // $.fn.datepicker.dates.nl = {
-    //   days: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
-    //   daysShort: ['zon', 'maa', 'din', 'woe', 'don', 'vrij', 'zat'],
-    //   daysMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-    //   months: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
-    //   monthsShort: ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
-    //   today: 'Vandaag',
-    //   clear: 'Annuleren',
-    //   format: 'dd/mm/yyyy',
-    //   weekStart: 1
-    // };
-
-  });
-
+Template.newEvent.events({
+  'change input.eventDateFrom': function(e, template){
+    e.preventDefault();
+    const dateFns = require('date-fns');
+    let dayAfter = dateFns.addDays(new Date(e.target.value), 1);
+    let dayAfterFormatted = dateFns.format(new Date(dayAfter),'YYYY-MM-DD');
+    $('input.eventDateTo').val(dayAfterFormatted);
+  },
+  'submit form.eventForm': function (e, template) {
+    e.preventDefault();
+    let form = template.firstNode;
+    let formFields = {
+      eventTitle: form.children[1].value,
+      eventDateFrom: new Date(form.children[2].children[1].value),
+      eventDateTo: new Date(form.children[2].children[3].value),
+      eventLocation: form.children[4].value
+    };
+    const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin', Roles.GLOBAL_GROUP);
+    if(isAdmin) {
+      return Events.insert({
+        eventTitle: formFields.eventTitle,
+        eventDateFrom: formFields.eventDateFrom,
+        eventDateTo: formFields.eventDateTo,
+        eventLocation: formFields.eventLocation
+      });
+    } else {
+      console.log('no admin');
+    }
+  },
 });
-
-// Template.newEvent.events();

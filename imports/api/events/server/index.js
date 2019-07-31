@@ -1,1 +1,2 @@
 import './publish';
+import './methods';

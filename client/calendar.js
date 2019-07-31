@@ -1,8 +1,15 @@
 import './calendar.html';
 import { Events } from '../imports/api/events';
 
+Template.calendar.onRendered(function() {
+  Tracker.autorun(() => {
+    Meteor.subscribe('events');
+  });
+});
+
 Template.calendar.helpers({
   eventList() {
+    let foundEvents = Events.findOne({});
     // const events = [
     //   {
     //     name: 'Cannenburgh',
@@ -15,6 +22,7 @@ Template.calendar.helpers({
     //     date: '1-2 juni',
     //   }
     // ];
-    return Events.find();
+    console.log('foundEvents', foundEvents);
+    return foundEvents;
   },
 });

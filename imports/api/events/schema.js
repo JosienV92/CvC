@@ -1,14 +1,16 @@
 import Events from './collection';
 
 Events.schema = new SimpleSchema({
-  name: {
+  eventTitle: {
     type: String
   },
-  date: {
-    type: String
+  eventDateFrom: {
+    type: Date
   },
-  location: {
-    type: Object,
-    blackbox: true,
+  eventDateTo: {
+    type: Date
+  },
+  eventLocation: {
+    type: String,
   },
 });
